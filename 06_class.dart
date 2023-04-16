@@ -1,19 +1,27 @@
 void main() {
   
-  final Hero wolverine = Hero('Logan', 'Regeneracion'); // Doy los valores a los atributos de la clase
+  final Hero wolverine = Hero(name: 'Logan');
   
   print(wolverine);
-  print(wolverine.name); // Accedo a los atributos de la clase
+  print(wolverine.name);
   print(wolverine.power);
 }
 
-class Hero { // Esto es una clase
-  String name; // Esto son atributos
+class Hero { // Esta es una clase
+  String name; // Estos son atributos
   String power;
   
-  Hero(this.name, this.power); // Esto es un constructor para inicializar los atributos
+  Hero({
+    required this.name,  // Estos son parametros requeridos y otra forma de inicializar los atributos
+    this.power = 'Sin poder' // Este es un parametro opcional
+    });
   
- // Hero(String pName, String pPower)  -- Otra forma de hacer un constructor
+ // Hero(String pName, String pPower)  // Esto es un constructor
  //   : name = pName,
  //     power = pPower;
+  
+  @override // Esto es un decorador y sirve para sobreescribir metodos
+  String toString() { // Esto sirve para sobreescribir el metodo toString
+    return '$name -- $power';
+  }
 }
